@@ -1,0 +1,40 @@
+wine = read.csv("wine.csv")
+plot(wine$Price~wine$Year)
+fit = lm(Price~Temp+Rain+PRain+Age, data = wine)
+summary(fit)
+
+plot(fit$res~fit$fitted.values)
+hist(fit$residuals)
+shapiro.test(fit$residuals)
+qqnorm(fit$residuals)
+boxcox(fit)
+###################################################
+fit = lm(sqrecPr~log(Temp)+Rain+PRain+Age, data = wine)
+summary(fit)
+plot(fit$res~fit$fitted.values)
+hist(fit$residuals)
+shapiro.test(fit$residuals)
+qqnorm(fit$residuals)
+
+
+fit1 = lm(sqrecPr~log(Temp)+Rain+Age, data = wine)
+summary(fit1)
+plot(fit1$res~fit1$fitted.values)
+hist(fit1$residuals)
+shapiro.test(fit1$residuals)
+qqnorm(fit1$residuals)
+
+####################################################
+fit = lm(Price~log(Temp)+log(Rain)+PRain+Age, data = wine)
+summary(fit)
+plot(fit$res~fit$fitted.values)
+hist(fit$residuals)
+shapiro.test(fit$residuals)
+qqnorm(fit$residuals)
+
+fit3 = lm(Price~log(Temp)+log(Rain)+Age, data = wine)
+summary(fit3)
+plot(fit3$res~fit3$fitted.values)
+hist(fit3$residuals)
+shapiro.test(fit3$residuals)
+qqnorm(fit3$residuals)
